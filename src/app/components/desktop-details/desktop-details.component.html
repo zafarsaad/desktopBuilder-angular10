@@ -1,65 +1,41 @@
 <div style="width: 400px; margin: auto;">
     <div *ngIf="currentDesktop" class="edit-form">
-      <h4>Desktop</h4>
-      <form>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            [(ngModel)]="currentDesktop.name"
-            name="name"
-          />
-        </div>
-        <div class="form-group">
-          <label for="cpu">CPU</label>
-          <input
-            type="text"
-            class="form-control"
-            id="cpu"
-            [(ngModel)]="currentDesktop.cpu"
-            name="cpu"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label><strong>Status:</strong></label>
-          {{ currentDesktop.working ? "Working" : "Broken" }}
-        </div>
-      </form>
-  
-      <button
-        class="badge badge-primary mr-2"
-        *ngIf="currentDesktop.working"
-        (click)="updatePublished(false)"
-      >
-        UnPublish
-      </button>
-      <button
-        *ngIf="!currentDesktop.working"
-        class="badge badge-primary mr-2"
-        (click)="updatePublished(true)"
-      >
-        Publish
-      </button>
-  
-      <button class="badge badge-danger mr-2" (click)="deleteDesktop()">
-        Delete
-      </button>
-  
-      <button
-        type="submit"
-        class="badge badge-success"
-        (click)="updateDesktop()"
-      >
-        Update
-      </button>
-      <p>{{ message }}</p>
+        <h4>Desktop</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="currentDesktop.name" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="cpu">CPU</label>
+                <input type="text" class="form-control" id="cpu" [(ngModel)]="currentDesktop.cpu" name="cpu" />
+            </div>
+
+            <div class="form-group">
+                <label><strong>Status:</strong></label>
+                {{ currentDesktop.working ? "Working" : "Broken" }}
+            </div>
+        </form>
+
+        <button class="btn btn-primary mr-2" *ngIf="currentDesktop.working" (click)="updateWorking(false)">
+            Broken
+        </button>
+        <button *ngIf="!currentDesktop.working" class="btn btn-primary mr-2" (click)="updateWorking(true)">
+            Working
+        </button>
+
+        <button class="btn btn-danger mr-2" (click)="deleteDesktop()">
+            Delete
+        </button>
+
+        <button type="submit" class="btn btn-success" (click)="updateDesktop()">
+            Update
+        </button>
+        <p>{{ message }}</p>
     </div>
-  
+
     <div *ngIf="!currentDesktop">
-      <br />
-      <p>Cannot access this Desktop...</p>
+        <br />
+        <p>Cannot access this Desktop...</p>
     </div>
-  </div>
+</div>
